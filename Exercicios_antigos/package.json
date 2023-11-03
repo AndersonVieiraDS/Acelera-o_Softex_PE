@@ -1,0 +1,16 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "Projeto de Teste",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "author": "Anderson",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^22.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

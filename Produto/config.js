@@ -1,9 +1,7 @@
-module.exports = {
-    development: {
-        username: 'Anderson',
-        password:'1234',
-        database: 'testBanco teste',
-        host: 'localhost',
-        dialect:'mysql'
-    }
-}
+export const development = {
+    username: 'root',
+    password: 'd9830aac0',
+    database: 'cadastro',
+    host: 'localhost',
+    dialect: 'mysql'
+};
