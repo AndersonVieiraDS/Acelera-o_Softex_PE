@@ -26,7 +26,7 @@ class Sanduiche {
     }
   }
   
-  // Classes concretas para os ingredientes específicos
+  // Classes concretas para os ingredientes específicos mencionados
   
   class FrangoAssado extends Sanduiche {
     getDescricao() {
