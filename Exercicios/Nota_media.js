@@ -4,7 +4,7 @@ let num3 = Number(prompt("Digite a terceira nota: "));
 let media = (num1 + num2 + num3)/3
 
 if (media < 7){
-    alert(`Sua média é ${media} e vc esá reprovado!`)
+    console.log(`Sua média é ${media} e vc esá reprovado!`)
 } else{
-    alert(`Sua média é ${media} e vc esá aprovado!`)
+    console.log(`Sua média é ${media} e vc esá aprovado!`)
 }
