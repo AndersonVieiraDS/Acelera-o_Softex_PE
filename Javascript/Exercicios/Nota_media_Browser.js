@@ -31,7 +31,7 @@ class CalculadoraMedia {
     }
   
     verificarAprovacao(media) {
-      if (media <= 7) {
+      if (media <= 6) {
         alert(`Sua média é ${media} e você está reprovado!`);
       } else {
         alert(`Sua média é ${media} e você está aprovado!`);
