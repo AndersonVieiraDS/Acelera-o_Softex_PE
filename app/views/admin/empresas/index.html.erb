@@ -1,7 +1,0 @@
-<h1>Lista de Empresas</h1>
-
-<% @empresas.each do |empresa| %>
-  <p><%= link_to empresa.nome, admin_empresa_path(empresa) %></p>
-<% end %>
-
-<%= link_to 'Nova Empresa', new_admin_empresa_path %>

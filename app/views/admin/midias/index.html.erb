@@ -1,7 +1,0 @@
-<h1>Lista de Mídias</h1>
-
-<% @midias.each do |midia| %>
-  <p><%= link_to midia.nome, admin_midia_path(midia) %></p>
-<% end %>
-
-<%= link_to 'Nova Mídia', new_admin_midia_path %>

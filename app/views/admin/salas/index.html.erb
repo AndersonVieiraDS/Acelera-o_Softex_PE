@@ -1,7 +1,0 @@
-<h1>Lista de Salas</h1>
-
-<% @salas.each do |sala| %>
-  <p><%= link_to "Sala #{sala.numero}", admin_sala_path(sala) %></p>
-<% end %>
-
-<%= link_to 'Nova Sala', new_admin_sala_path %>
