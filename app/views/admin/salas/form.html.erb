@@ -1,0 +1,28 @@
+<%= form_with(model: sala, url: sala.persisted? ? admin_sala_path(sala) : admin_salas_path, method: sala.persisted? ? :patch : :post) do |form| %>
+    <% if sala.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(sala.errors.count, "erro") %> proibiram que esta sala fosse salva:</h2>
+  
+        <ul>
+          <% sala.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :numero %>
+      <%= form.text_field :numero %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :outras_informacoes %>
+      <%= form.text_area :outras_informacoes %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

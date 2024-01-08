@@ -1,0 +1,7 @@
+<h1>Lista de Andares</h1>
+
+<% @andares.each do |andar| %>
+  <p><%= link_to "Andar #{andar.numero}", admin_andar_path(andar) %></p>
+<% end %>
+
+<%= link_to 'Novo Andar', new_admin_andar_path %>
