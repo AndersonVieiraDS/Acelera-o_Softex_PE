@@ -1,0 +1,8 @@
+<h1><%= @midia.nome %></h1>
+
+<p>Tempo de Duração: <%= @midia.tempo_duracao %> segundos</p>
+<p>Prazo de Expiração: <%= @midia.prazo_expiracao %></p>
+<p>Outras informações: <%= @midia.outras_informacoes %></p>
+
+<%= link_to 'Editar', edit_admin_midia_path(@midia) %> |
+<%= link_to 'Voltar', admin_midias_path %>

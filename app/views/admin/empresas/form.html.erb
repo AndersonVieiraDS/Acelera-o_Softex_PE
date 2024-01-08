@@ -1,0 +1,28 @@
+<%= form_with(model: empresa, url: empresa.persisted? ? admin_empresa_path(empresa) : admin_empresas_path, method: empresa.persisted? ? :patch : :post) do |form| %>
+    <% if empresa.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(empresa.errors.count, "erro") %> proibiram que esta empresa fosse salva:</h2>
+  
+        <ul>
+          <% empresa.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :nome %>
+      <%= form.text_field :nome %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :outras_informacoes %>
+      <%= form.text_area :outras_informacoes %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
