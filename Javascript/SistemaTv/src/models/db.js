@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 // Substitua 'nome_do_banco', 'nome_usuario' e 'senha_usuario' pelos seus próprios valores
-const sequelize = new Sequelize('nome_do_banco', 'nome_usuario', 'senha_usuario', {
+const sequelize = new Sequelize('SistemaTv', 'root', '1234', {
   host: 'localhost',
   dialect: 'postgres',
 });
