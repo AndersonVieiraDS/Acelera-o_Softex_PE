@@ -7,21 +7,41 @@ const rl = createInterface({
   output: process.stdout
 });
 
-rl.question('Digite a primeira nota: ', (num1) => {
-  rl.question('Digite a segunda nota: ', (num2) => {
-    rl.question('Digite a terceira nota: ', (num3) => {
-      const media = (Number(num1) + Number(num2) + Number(num3)) / 3;
+async function obterNotas() {
+  const num1 = await pergunta('Digite a primeira nota: ');
+  const num2 = await pergunta('Digite a segunda nota: ');
+  const num3 = await pergunta('Digite a terceira nota: ');
 
-      if (media <= 7) {
-        console.log(`Sua média é ${media} e você está reprovado!`);
-      } else {
-        console.log(`Sua média é ${media} e você está aprovado!`);
-      }
+  return [Number(num1), Number(num2), Number(num3)];
+}
 
-      rl.close();
-    });
+function pergunta(mensagem) {
+  return new Promise((resolve) => {
+    rl.question(mensagem, resolve);
   });
-});
+}
+
+function calcularMedia(notas) {
+  return notas.reduce((acc, nota) => acc + nota, 0) / notas.length;
+}
+
+function verificarAprovacao(media) {
+  if (media <= 7) {
+    console.log(`Sua média é ${media} e você está reprovado!`);
+  } else {
+    console.log(`Sua média é ${media} e você está aprovado!`);
+  }
+}
+
+async function iniciar() {
+  const notas = await obterNotas();
+  const media = calcularMedia(notas);
+  verificarAprovacao(media);
+  rl.close();
+}
+
+iniciar();
+
 
 //Agora segue o mesmo códgio oreintado a objetos
 

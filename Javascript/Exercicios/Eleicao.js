@@ -1,39 +1,46 @@
-// Simulação de uma eleição com 3 candidatos em Typescript orientado a objetos
+// Enum para representar os candidatos
+enum Candidatos {
+  Candidato1 = "Candidato 1",
+  Candidato2 = "Candidato 2",
+  Candidato3 = "Candidato 3",
+}
 
 class Eleicao {
-    constructor() {
-      this.candidatos = {
-        "Candidato 1": 0,
-        "Candidato 2": 0,
-        "Candidato 3": 0,
-      };
-    }
-  
-    votar(candidato) {
-      if (this.candidatos.hasOwnProperty(candidato)) {
-        this.candidatos[candidato]++;
-        console.log(`Voto registrado para ${candidato}`);
-      } else {
-        console.log("Candidato inválido.");
-      }
-    }
-  
-    exibirResultados() {
-      console.log("Resultados da Eleição:");
-      for (const candidato in this.candidatos) {
-        console.log(`${candidato}: ${this.candidatos[candidato]} votos`);
-      }
+  private candidatos: Record<Candidatos, number>;
+
+  constructor() {
+    this.candidatos = {
+      [Candidatos.Candidato1]: 0,
+      [Candidatos.Candidato2]: 0,
+      [Candidatos.Candidato3]: 0,
+    };
+  }
+
+  votar(candidato: Candidatos): void {
+    if (this.candidatos.hasOwnProperty(candidato)) {
+      this.candidatos[candidato]++;
+      console.log(`Voto registrado para ${candidato}`);
+    } else {
+      console.log("Candidato inválido.");
     }
   }
-  
-  // Exemplo de uso
-  const eleicao = new Eleicao();
-  
-  eleicao.votar("Candidato 1");
-  eleicao.votar("Candidato 2");
-  eleicao.votar("Candidato 1");
-  eleicao.votar("Candidato 3");
-  eleicao.votar("Candidato 2");
-  eleicao.votar("Candidato 3");
-  
-  eleicao.exibirResultados();  
+
+  exibirResultados(): void {
+    console.log("Resultados da Eleição:");
+    for (const candidato in this.candidatos) {
+      console.log(`${candidato}: ${this.candidatos[candidato]} votos`);
+    }
+  }
+}
+
+// Exemplo de uso
+const eleicao = new Eleicao();
+
+eleicao.votar(Candidatos.Candidato1);
+eleicao.votar(Candidatos.Candidato2);
+eleicao.votar(Candidatos.Candidato1);
+eleicao.votar(Candidatos.Candidato3);
+eleicao.votar(Candidatos.Candidato2);
+eleicao.votar(Candidatos.Candidato3);
+
+eleicao.exibirResultados();

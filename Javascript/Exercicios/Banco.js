@@ -1,37 +1,47 @@
-// Simulação de um banco simples em JavaScript
+// Constantes para mensagens
+const MENSAGEM_DEPOSITO_INVALIDO = "Por favor, insira uma quantia válida para depósito.";
+const MENSAGEM_SAQUE_INVALIDO = "Saldo insuficiente ou quantia inválida para saque.";
 
 // Função construtora para criar uma conta bancária
 class ContaBancaria {
   constructor(nome, saldoInicial) {
-
     this.nome = nome;
     this.saldo = saldoInicial;
+  }
 
-    // Função para depositar dinheiro na conta
-    this.depositar = function (quantia) {
+  // Método para depositar dinheiro na conta
+  depositar(quantia) {
+    if (this.validarQuantia(quantia)) {
+      this.saldo += quantia;
+      console.log(`Depósito de $${quantia} realizado. Novo saldo: $${this.saldo}`);
+    } else {
+      console.log(MENSAGEM_DEPOSITO_INVALIDO);
+    }
+  }
 
-      if (quantia > 0) {
-        this.saldo += quantia;
-        console.log(`Depósito de $${quantia} realizado. Novo saldo: $${this.saldo}`);
-      } else {
-        console.log("Por favor, insira uma quantia válida para depósito.");
-      }
-    };
+  // Método para sacar dinheiro da conta
+  sacar(quantia) {
+    if (this.validarQuantia(quantia) && this.validarSaldoSuficiente(quantia)) {
+      this.saldo -= quantia;
+      console.log(`Saque de $${quantia} realizado. Novo saldo: $${this.saldo}`);
+    } else {
+      console.log(MENSAGEM_SAQUE_INVALIDO);
+    }
+  }
 
-    // Função para sacar dinheiro da conta
-    this.sacar = function (quantia) {
-      if (quantia > 0 && quantia <= this.saldo) {
-        this.saldo -= quantia;
-        console.log(`Saque de $${quantia} realizado. Novo saldo: $${this.saldo}`);
-      } else {
-        console.log("Saldo insuficiente ou quantia inválida para saque.");
-      }
-    };
+  // Método para verificar o saldo da conta
+  verificarSaldo() {
+    console.log(`Saldo atual da conta de ${this.nome}: $${this.saldo}`);
+  }
 
-    // Função para verificar o saldo da conta
-    this.verificarSaldo = function () {
-      console.log(`Saldo atual da conta de ${this.nome}: $${this.saldo}`);
-    };
+  // Método privado para validar se a quantia é válida (maior que zero)
+  validarQuantia(quantia) {
+    return quantia > 0;
+  }
+
+  // Método privado para validar se há saldo suficiente para o saque
+  validarSaldoSuficiente(quantia) {
+    return quantia <= this.saldo;
   }
 }
 

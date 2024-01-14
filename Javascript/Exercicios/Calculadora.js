@@ -1,25 +1,3 @@
-//Fazendo uma calculadora com programação estruturada para rodar em um browser;
-
-// let num1 = Number(prompt("Digite um número: "));
-// let num2 = Number(prompt("Digite outro número: "));
-// let opeMat = prompt("Escolha o operador matemático: 1: + ,2: - , 3: * , 4: /");
-
-// switch(opeMat){
-//     case '+':
-//         alert(`O resultado é ${num1 + num2}`);
-//         break;
-//     case '-':
-//         alert(`O resultado é ${num1 - num2}`);
-//         break;
-//     case '*':
-//         alert(`O resultado é ${num1 * num2}`);
-//         break;
-//     case '/':
-//         alert(`O resultado é ${(num1 / num2).toFixed(2)} e o resto da divisão é ${num1 % num2}`);
-//         break;
-// }
-
-//Fazendo uma calculadora com programação estruturada, usando funções, para rodar em um browser;
 import { createInterface } from 'readline';
 
 const rl = createInterface({
@@ -27,20 +5,43 @@ const rl = createInterface({
   output: process.stdout
 });
 
-function obterInformacoesDoUsuario() {
+function obterNumerosEOperacao() {
   return new Promise((resolve) => {
-    rl.question('Digite seu nome: ', (nome) => {
-      rl.question('Digite seu gênero (masculino/feminino): ', (genero) => {
-        resolve({ nome, genero });
-        rl.close();
+    rl.question('Digite o primeiro número: ', (num1) => {
+      rl.question('Digite o segundo número: ', (num2) => {
+        rl.question('Escolha o operador matemático (+, -, *, /): ', (operador) => {
+          resolve({ num1: Number(num1), num2: Number(num2), operador });
+          rl.close();
+        });
       });
     });
   });
 }
 
+function calcularResultado(num1, num2, operador) {
+  switch (operador) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      return { resultado: num1 / num2, resto: num1 % num2 };
+    default:
+      return 'Operador inválido';
+  }
+}
+
 async function main() {
-  const informacoes = await obterInformacoesDoUsuario();
-  console.log('Informações do usuário:', informacoes);
+  const { num1, num2, operador } = await obterNumerosEOperacao();
+  const resultado = calcularResultado(num1, num2, operador);
+
+  if (typeof resultado === 'object') {
+    console.log(`O resultado é ${resultado.resultado.toFixed(2)} e o resto da divisão é ${resultado.resto}`);
+  } else {
+    console.log(`O resultado é ${resultado}`);
+  }
 }
 
 main();
