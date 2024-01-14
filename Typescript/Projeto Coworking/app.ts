@@ -13,6 +13,8 @@ const pool = new Pool({
   port: 5433,
 });
 
+app.use(express.json()); // Habilita o uso de JSON no corpo das requisições
+
 app.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT $1::text as message', ['Olá PostgreSQL']);
