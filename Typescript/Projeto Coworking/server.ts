@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import clienteRoutes from './src/routes/clienteRoutes';
+import { clienteRoutes } from '../routes/clienteRoutes';
 
 const app = express();
 const port = 3000;
