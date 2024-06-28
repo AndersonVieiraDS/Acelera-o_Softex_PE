@@ -62,4 +62,4 @@ coverage/
 typings/
 
 # JSON files in the root directory
-/*.json
+/*lock.json
